@@ -15,7 +15,7 @@ const DogsApiService = {
       )
   },
   deleteDog() {
-    return fetch(`${config.API_ENDPOINT}/dogs`. {
+    return fetch(`${config.API_ENDPOINT}/dogs`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
