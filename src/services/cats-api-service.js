@@ -15,7 +15,7 @@ const CatsApiService = {
       )
   },
   deleteCat() {
-    return fetch(`${config.API_ENDPOINT}/cats`. {
+    return fetch(`${config.API_ENDPOINT}/cats`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
