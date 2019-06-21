@@ -10,13 +10,12 @@ export default class LandingPage extends Component {
     e.preventDefault();
     this.context.clearError();
     this.context.clearUserName();
-    console.log(this.context.userName)
-    this.context.setUserName(document.getElementById('name').value)
-    const name = this.context.userName
+    let name = document.getElementById('name').value;
+    this.context.setUserName(name)
 
     console.log(name)
 
-    UsersApiService.postUser({name: name})
+    return UsersApiService.postUser(name)
       .then(res => {
 
         const {location, history} = this.props
