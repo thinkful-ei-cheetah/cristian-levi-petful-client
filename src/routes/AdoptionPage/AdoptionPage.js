@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import AppContext from '../../contexts/AppContext'
 import PetCard from '../../components/PetCard/PetCard'
 import Adopted from '../../components/Adopted/Adopted'
 import Line from '../../components/Line/Line'
 
 export default class AdoptionPage extends Component {
+  static contextType = AppContext;
+
   render() {
+    console.log(this.context.userName)
     return (
       <div>
         <h1>
