@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
+import AppContext from '../../contexts/AppContext'
 import './PetCard.css';
 
 export default class PetCard extends Component {
+  static contextType = AppContext
   render() {
+    console.log(this.context.currentCat)
     return (
       <div className='PetCard'>
         <img src='https://cdn.theatlantic.com/assets/media/img/mt/2018/11/shutterstock_552503470/lead_720_405.jpg?mod=1541605820' alt='pet' />
