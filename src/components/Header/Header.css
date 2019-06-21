@@ -1,0 +1,44 @@
+.Header {
+  height: 40px;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+}
+
+.Header h1 {
+  margin: 0;
+}
+
+.Header a {
+  color: white;
+  text-decoration: none;
+}
+
+.Header-adopt {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: right;
+}
+
+
+
+@media screen and (min-width: 450px) {
+  .Header {
+    align-items: baseline;
+  }
+
+  .Header h1 {
+    font-size: 22pt;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .Header-tagline--wide {
+    display: none;
+  }
+
+  .Header-tagline--narrow {
+    display: inherit;
+  }
+}

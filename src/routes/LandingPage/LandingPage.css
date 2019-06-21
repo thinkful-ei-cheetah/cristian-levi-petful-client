@@ -1,0 +1,14 @@
+.LandingPage {
+  width: 600px;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: 400px;
+}
+
+input {
+  margin-left: 5px;
+  margin-right: 5px;
+}
