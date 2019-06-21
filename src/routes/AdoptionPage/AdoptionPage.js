@@ -20,6 +20,7 @@ export default class AdoptionPage extends Component {
       .then((res) => {
         this.context.setCurrentCat(res[0])
         this.context.setCurrentDog(res[1])
+        console.log(res[2])
         let userQueue = new Queue()
         res[2].forEach(user => userQueue.enqueue(user))
         this.context.setLineQueue(userQueue)
