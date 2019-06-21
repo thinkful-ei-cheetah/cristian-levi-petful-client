@@ -8,7 +8,6 @@ export default class AdoptionPage extends Component {
   static contextType = AppContext;
 
   render() {
-    console.log(this.context.userName)
     return (
       <div>
         <h1>

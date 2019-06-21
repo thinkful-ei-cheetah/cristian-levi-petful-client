@@ -13,7 +13,9 @@ export default class LandingPage extends Component {
     let name = document.getElementById('name').value;
     this.context.setUserName(name)
 
-    UsersApiService.postUser({name: name})
+    console.log(name)
+
+    return UsersApiService.postUser(name)
       .then(res => {
 
         const {location, history} = this.props
