@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import './PetCard.css';
 
 export default class PetCard extends Component {
