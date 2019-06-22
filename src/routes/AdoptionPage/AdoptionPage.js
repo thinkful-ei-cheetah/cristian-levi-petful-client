@@ -8,7 +8,7 @@ import DogsApiService from '../../services/dogs-api-service'
 import UsersApiService from '../../services/users-api-service'
 import './AdoptionPage.css'
 
-const Queue = require('../../services/queue')
+import Queue from '../../services/queue'
 
 export default class AdoptionPage extends Component {
   static contextType = AppContext

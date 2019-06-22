@@ -6,9 +6,9 @@ class _Node {
 }
 
 class Queue {
-  constructor(){
-    this.first = null;
-    this.last = null;
+  constructor(first = null, last = null){
+    this.first = first;
+    this.last = last;
   }
   enqueue(data){
     const node = new _Node(data);
@@ -42,5 +42,5 @@ class Queue {
     return temp
   }
 }
-
-module.exports = Queue
+export default Queue
+// module.exports = Queue
