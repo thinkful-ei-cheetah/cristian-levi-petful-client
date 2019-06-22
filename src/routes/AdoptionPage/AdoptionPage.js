@@ -18,9 +18,7 @@ export default class AdoptionPage extends Component {
     this.context.clearLineQueue();
     this.context.clearCurrentCat();
     this.context.clearCurrentDog();
-    setInterval(function(){
-        this.cycleList()
-      }, 5000)
+    this.interval = setInterval( this.cycleList.bind(this), 15000)
     Promise.all([CatsApiService.getCat(), DogsApiService.getDog(), UsersApiService.getUsers()])
       .then((res) => {
         this.context.setCurrentCat(res[0])
@@ -32,19 +30,15 @@ export default class AdoptionPage extends Component {
       .catch(e => console.error(e));
   }
 
-  catOrDog = () => {
-    let coin = Math.floor(Math.random() * 100)
-    if(coin < 50){
-      this.handleAdoptCat()
-    }
-    else {
-      this.handleAdoptDog()
-    }
-  }
-
   cycleList = () => {
     if(this.context.userName !== this.context.lineQueue.first.value){
-      setTimeout(function(){this.catOrDog();}, 5000);
+      let coin = Math.floor(Math.random() * 100)
+      if(coin < 50){
+        this.handleAdoptCat()
+      }
+      else {
+        this.handleAdoptDog()
+      }
     }
   }
 
@@ -55,6 +49,19 @@ export default class AdoptionPage extends Component {
   //     };}, 5000);
   // }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  renderLine = () => {
+    return (
+      <Line 
+        first={this.context.lineQueue.first.value}
+        second={this.context.lineQueue.first.next.value}
+        third={this.context.lineQueue.first.next.next.value}
+      />
+    )
+  }
 
   renderCat = () => {
     return (
@@ -79,7 +86,8 @@ export default class AdoptionPage extends Component {
   handleAdoptCat = () => {
     return CatsApiService.deleteCat()
         .then(res => {
-          this.context.lineQueue.requeue()
+          let owner = this.context.lineQueue.requeue()
+          res.owner = owner
           this.context.setAdopted(res)
         })
         .then(res => {
@@ -91,7 +99,8 @@ export default class AdoptionPage extends Component {
   handleAdoptDog = () => {
     return DogsApiService.deleteDog()
         .then(res => {
-          this.context.lineQueue.requeue()
+          let owner = this.context.lineQueue.requeue()
+          res.owner = owner
           this.context.setAdopted(res)
         })
         .then(res => {
@@ -107,6 +116,7 @@ export default class AdoptionPage extends Component {
             imgSrc={animal.imageURL}
             imgDes={animal.imageDescription}
             name={animal.name}
+            owner={animal.owner}
           />
         </div>
       )
@@ -116,7 +126,7 @@ export default class AdoptionPage extends Component {
         <h1>
           Choose your furry friend!
         </h1>
-        <Line />
+        {this.context.lineQueue ? this.renderLine() : 'Loading...'}
         <div className='Pets-available'>
           <h2>Available Pets</h2>
           <div className='cat'>

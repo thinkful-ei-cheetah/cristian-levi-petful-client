@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AppContext from '../../contexts/AppContext'
-import Screenshot from '../../media/screenshot.jpg'
+import Screenshot from '../../media/screenshot.png'
 import UsersApiService from '../../services/users-api-service'
 import './LandingPage.css'
 

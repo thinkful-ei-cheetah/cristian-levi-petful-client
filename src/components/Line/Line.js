@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import AppContext from '../../contexts/AppContext'
 
 export default class Line extends Component {
   render() {
@@ -6,9 +7,9 @@ export default class Line extends Component {
       <div>
         <ul className='order-list'>
           <h2>Up Next!</h2>
-          <li>john</li>
-          <li>sarah</li>
-          <li>levi</li>
+          <li>{this.props.first}</li>
+          <li>{this.props.second}</li>
+          <li>{this.props.third}</li>
         </ul>
       </div>
     )
