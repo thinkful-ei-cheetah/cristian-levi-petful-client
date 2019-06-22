@@ -1,7 +1,7 @@
 # Pet-Deli
 + Link to Live: [Pet-Deli api github](https://github.com/thinkful-ei-cheetah/cristian-levi-petful-server)
 + Link to Client Repo: [Pet-Deli app github](https://github.com/thinkful-ei-cheetah/cristian-levi-petful-client)
-+ Link to API Repo: [Live](https://pet-deli.levipaulk.now.sh/adopt)
++ Link to API Repo: [Live](https://pet-deli.levipaulk.now.sh/)
 
 ## Authors 
 + Cristian and Levi
