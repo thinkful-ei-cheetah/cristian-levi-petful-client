@@ -1,34 +1,14 @@
 import React, {Component} from 'react';
 import AppContext from '../../contexts/AppContext'
-import CatsApiService from '../../services/cats-api-service'
-import DogsApiService from '../../services/dogs-api-service'
 import './PetCard.css';
 
 export default class PetCard extends Component {
   static contextType = AppContext
-  handleAdoptClick(){
-    if(this.props.animalType === 'cat'){
-      CatsApiService.deleteCat()
-        .then(res => {
-          console.log(res)
-          this.context.lineQueue.requeue()
-        })
-        .then(() => {
-          this.context.setCurrentCat()
-        })
-        .then(res => {
-          CatsApiService.getCat(res)
-        })
-    }
-    else{
-      DogsApiService.deleteDog()
-    }
-  }
   render() {
-    console.log(this.props.animalType)
-    let animal = this.props.animal
+
+    const {animal, handleAdoptClick} = this.props
     let isFirstInLine = false
-    if(this.context.lineQueue){
+    if(this.context.lineQueue) {
       isFirstInLine = (this.context.userName === this.context.lineQueue.first.value)
     }
     return (
@@ -43,7 +23,7 @@ export default class PetCard extends Component {
         </ul>
         <button 
           type='button' 
-          onClick={() => this.handleAdoptClick()}
+          onClick={handleAdoptClick}
           disabled={!isFirstInLine}
         >
           Adopt
