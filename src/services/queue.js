@@ -33,6 +33,14 @@ class Queue {
     }
     return node.value;
   }
+  requeue(){
+    if(this.first === null){
+      return;
+    }
+    let temp = this.dequeue()
+    this.enqueue(temp)
+    return temp
+  }
 }
 
 module.exports = Queue

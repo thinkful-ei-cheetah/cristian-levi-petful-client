@@ -38,11 +38,17 @@ export default class AdoptionPage extends Component {
           <h2>Available Pets</h2>
           <div className='cat'>
             <h3>Kitty</h3>
-            <PetCard />
+            <PetCard 
+              animal={this.context.currentCat}
+              animalType={'cat'}
+            />
           </div>
           <div className='dog'>
             <h3>Dogue</h3>
-            <PetCard />
+            <PetCard 
+              animal={this.context.currentDog}
+              animalType={'dog'}
+            />
           </div>
         </div>
         <div className='Pets-adopted'>
