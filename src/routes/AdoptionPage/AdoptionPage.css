@@ -1,0 +1,14 @@
+.Adopted {
+  width: 200px;
+  height: fit-content;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.Adopted img {
+  width: 100%;
+  height: initial;
+  margin-bottom: 10px;
+}

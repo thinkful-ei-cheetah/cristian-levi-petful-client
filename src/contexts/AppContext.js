@@ -6,6 +6,7 @@ const AppContext = React.createContext({
   userName: '',
   currentCat: {},
   currentDog: {},
+  adoptedPets: [],
   error: null,
   setUsers: () => {},
   clearUsers: () => {},
@@ -17,8 +18,12 @@ const AppContext = React.createContext({
   clearCurrentCat: () => {},
   setCurrentDog: () => {},
   clearCurrentDog: () => {},
+  setAdopted: () => {},
+  clearAdopted: () => {},
   setError: () => {},
   clearError: () => {},
+  catOrDog: () => {},
+  cycleList: () => {}
 })
 
 export default AppContext;
@@ -30,6 +35,7 @@ export class AppContextProvider extends Component {
     userName: '',
     currentCat: {},
     currentDog: {},
+    adopted: [],
     error: null,
   }
 
@@ -82,6 +88,31 @@ export class AppContextProvider extends Component {
     this.setState({error: null})
   }
 
+  setAdopted = (adopted) => {
+    this.setState({adopted: [...this.state.adopted, adopted]})
+  }
+
+  clearAdopted = () => {
+    this.setState({adopted: []})
+  }
+
+  catOrDog = () => {
+    let coin = Math.floor(Math.random() * 100)
+    if(coin < 50){
+      this.handleAdoptCat()
+    }
+    else {
+      this.handleAdoptDog()
+    }
+  }
+
+  cycleList = () => {
+    if(this.context.userName !== this.context.lineQueue.first.value){
+      setTimeout(function(){this.catOrDog();}, 5000);
+    }
+  }
+
+
   render() {
     const value = {
       users: this.state.users,
@@ -89,6 +120,7 @@ export class AppContextProvider extends Component {
       userName: this.state.userName,
       currentCat: this.state.currentCat,
       currentDog: this.state.currentDog,
+      adopted: this.state.adopted,
       error: this.state.error,
       setUsers: this.setUsers,
       clearUsers: this.clearUsers,
@@ -100,8 +132,12 @@ export class AppContextProvider extends Component {
       clearCurrentCat: this.clearCurrentCat,
       setCurrentDog: this.setCurrentDog,
       clearCurrentDog: this.clearCurrentDog,
+      setAdopted: this.setAdopted,
+      clearAdopted: this.clearAdopted,
       setError: this.setError,
       clearError: this.clearError,
+      catOrDog: this.catOrDog,
+      cycleList: this.cycleList
     }
 
     return (
